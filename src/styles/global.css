@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+:root {
+  /* Bright Botanical Palette */
+  --color-bg: #faf7f2;
+  --color-bg-alt: #f3ede2;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-surface-hover: rgba(255, 255, 255, 0.92);
+  --color-border: rgba(20, 45, 30, 0.08);
+  --color-border-bright: rgba(45, 106, 79, 0.35);
+  
+  --color-forest: #0f2419;
+  --color-leaf: #2d6a4f;
+  --color-sage: #52b788;
+  --color-matcha: #74c69d;
+  --color-pollen: #e5a02e;
+  --color-pollen-glow: rgba(229, 160, 46, 0.35);
+  --color-terracotta: #d96b52;
+  --color-dew: #ffffff;
+  
+  --color-text-primary: #0f2419;
+  --color-text-secondary: #3b5a4a;
+  --color-text-dim: #6d8477;
+  
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Fixed 3D Canvas Background Viewport */
+.universe-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(circle at 60% 30%, #fffdfa 0%, #f6f0e6 60%, #eee5d5 100%);
+}
+
+#webgl-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto;
+}
+
+/* Fallback background when WebGL is unavailable */
+.webgl-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 75% 25%, rgba(229, 160, 46, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 25% 75%, rgba(82, 183, 136, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, #faf6ef 0%, #ede4d2 100%);
+}
+
+.no-webgl .webgl-fallback {
+  display: block;
+}
+
+/* Atmospheric Overlays */
+.sunlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(255, 248, 230, 0.6) 0%, transparent 60%),
+    radial-gradient(circle at 15% 85%, rgba(230, 245, 236, 0.4) 0%, transparent 50%);
+  mix-blend-mode: soft-light;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.25;
+  background-image: radial-gradient(rgba(15, 36, 25, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Minimal Botanical Frame Corners */
+.hud-corner {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.35;
+  transition: opacity 0.5s var(--ease-smooth);
+}
+
+.hud-corner--tl {
+  top: 22px;
+  left: 22px;
+  border-top: 1.5px solid var(--color-leaf);
+  border-left: 1.5px solid var(--color-leaf);
+  border-top-left-radius: 4px;
+}
+
+.hud-corner--tr {
+  top: 22px;
+  right: 22px;
+  border-top: 1.5px solid var(--color-leaf);
+  border-right: 1.5px solid var(--color-leaf);
+  border-top-right-radius: 4px;
+}
+
+.hud-corner--bl {
+  bottom: 22px;
+  left: 22px;
+  border-bottom: 1.5px solid var(--color-leaf);
+  border-left: 1.5px solid var(--color-leaf);
+  border-bottom-left-radius: 4px;
+}
+
+.hud-corner--br {
+  bottom: 22px;
+  right: 22px;
+  border-bottom: 1.5px solid var(--color-leaf);
+  border-right: 1.5px solid var(--color-leaf);
+  border-bottom-right-radius: 4px;
+}
+
+/* Fixed HUD Header wrapper */
+.hud-header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: clamp(20px, 3.5vw, 36px) clamp(24px, 4vw, 44px);
+  pointer-events: none;
+}
+
+.hud-header-wrapper > * {
+  pointer-events: auto;
+}
+
+/* Scroll Journey Viewport Container */
+.scroll-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  pointer-events: none;
+}
+
+.scroll-stage {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(100px, 14vh, 140px) clamp(24px, 5vw, 64px) clamp(60px, 10vh, 100px);
+  position: relative;
+  pointer-events: none;
+}
+
+.scroll-stage > * {
+  pointer-events: auto;
+}
+
+/* Interactive elements common styles */
+button, a {
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  text-decoration: none;
+}
+
+/* Botanical Telemetry Chip */
+.telemetry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  box-shadow: 0 4px 18px rgba(15, 36, 25, 0.04);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.telemetry-chip:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-bright);
+  color: var(--color-text-primary);
+  box-shadow: 0 6px 24px rgba(45, 106, 79, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Botanical Germinating Beacon */
+.pulse-beacon {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-sage);
+  box-shadow: 0 0 10px rgba(82, 183, 136, 0.8);
+}
+
+.pulse-beacon::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-sage);
+  animation: beacon-germinate 2.4s infinite var(--ease-cinematic);
+}
+
+@keyframes beacon-germinate {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hud-corner {
+    display: none;
+  }
+  .scroll-stage {
+    padding: 100px 20px 60px;
+  }
+}

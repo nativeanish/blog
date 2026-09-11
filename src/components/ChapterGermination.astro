@@ -1,0 +1,168 @@
+---
+// Chapter 02: Germination & Unfolding
+---
+<section class="chapter-germination" aria-label="Chapter 02: Germination">
+  <div class="content-card">
+    <div class="chapter-eyebrow">
+      <span class="chapter-num">02</span>
+      <span class="chapter-sep" aria-hidden="true">/</span>
+      <span class="chapter-title">GERMINATION & UNFOLDING</span>
+    </div>
+
+    <h2 class="section-title">
+      Cultivating at the intersection of <em class="serif-accent">design</em>, <em class="serif-accent">code</em>, and living systems.
+    </h2>
+
+    <p class="section-desc">
+      Digital spaces shouldn't feel like cold machinery. In this garden, every contour, shader, and interaction is cultivated with organic rhythm and intentional craft.
+    </p>
+
+    <div class="vitality-grid">
+      <div class="vitality-card">
+        <span class="vitality-dot" aria-hidden="true"></span>
+        <div class="vitality-info">
+          <span class="vitality-label">ARCHITECTURE</span>
+          <span class="vitality-val">ORGANIC GLSL + THREE.JS</span>
+        </div>
+      </div>
+
+      <div class="vitality-card">
+        <span class="vitality-dot dot-pollen" aria-hidden="true"></span>
+        <div class="vitality-info">
+          <span class="vitality-label">GROWTH STAGE</span>
+          <span class="vitality-val">UNFOLDING PETALS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .chapter-germination {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .content-card {
+    max-width: 640px;
+    padding: clamp(28px, 4vw, 44px);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 12px 36px rgba(15, 36, 25, 0.05);
+    pointer-events: auto;
+  }
+
+  .chapter-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-leaf);
+    margin-bottom: 20px;
+  }
+
+  .chapter-num {
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: rgba(45, 106, 79, 0.12);
+    color: var(--color-leaf);
+  }
+
+  .chapter-sep {
+    color: var(--color-border);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--color-forest);
+    margin-bottom: 18px;
+  }
+
+  .serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-leaf);
+  }
+
+  .section-desc {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 28px;
+  }
+
+  .vitality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .vitality-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(20, 45, 30, 0.06);
+    border-radius: 12px;
+  }
+
+  .vitality-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-sage);
+    box-shadow: 0 0 8px rgba(82, 183, 136, 0.6);
+    flex-shrink: 0;
+  }
+
+  .vitality-dot.dot-pollen {
+    background: var(--color-pollen);
+    box-shadow: 0 0 8px rgba(229, 160, 46, 0.6);
+  }
+
+  .vitality-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vitality-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+  }
+
+  .vitality-val {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-forest);
+  }
+
+  @media (max-width: 640px) {
+    .content-card {
+      padding: 24px 20px;
+    }
+    .vitality-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

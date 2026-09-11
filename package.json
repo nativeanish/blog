@@ -9,6 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.14.1"
+    "@types/three": "^0.185.4",
+    "astro": "^7.3.2",
+    "three": "^0.186.0"
   }
 }

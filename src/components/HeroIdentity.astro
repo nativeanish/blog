@@ -1,0 +1,372 @@
+---
+// Botanical Garden Hero Identity for Anish (Stage 01: The Seed)
+---
+<section class="hero-container" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <!-- Eyebrow status tag -->
+    <div class="eyebrow-wrapper">
+      <div class="eyebrow-chip">
+        <span class="eyebrow-marker" aria-hidden="true"></span>
+        <span class="eyebrow-code">CHAPTER 01 // SEEDLING STAGE</span>
+      </div>
+    </div>
+
+    <!-- Monumental Identity Typography -->
+    <div class="title-frame">
+      <h1 id="hero-title" class="hero-title" data-cursor="pointer">
+        <span class="letter">A</span>
+        <span class="letter">N</span>
+        <span class="letter">I</span>
+        <span class="letter">S</span>
+        <span class="letter">H</span>
+      </h1>
+      <div class="title-glow-effect" aria-hidden="true">ANISH</div>
+    </div>
+
+    <!-- Botanical Narrative Manifesto -->
+    <div class="manifesto-block">
+      <p class="manifesto-line primary-line">
+        Something is taking root.
+      </p>
+      <p class="manifesto-line secondary-line">
+        A new digital garden is growing.
+      </p>
+      <div class="affirmation-cluster">
+        <span class="sprout-marker" aria-hidden="true">🌱</span>
+        <p class="affirmation-text">I'm Anish.</p>
+      </div>
+    </div>
+
+    <!-- Geographic & Botanical Telemetry -->
+    <div class="telemetry-bar">
+      <div class="telemetry-item">
+        <span class="coord-label">SANCTUARY</span>
+        <span class="coord-value">KATHMANDU, NEPAL</span>
+      </div>
+      <span class="telemetry-sep" aria-hidden="true">/</span>
+      <div class="telemetry-item">
+        <span class="coord-label">COORDS</span>
+        <span class="coord-value">27.7172° N, 85.3240° E</span>
+      </div>
+      <span class="telemetry-sep" aria-hidden="true">/</span>
+      <div class="telemetry-item">
+        <span class="coord-label">ELEVATION</span>
+        <span class="coord-value">1,400M</span>
+      </div>
+      <span class="telemetry-sep" aria-hidden="true">/</span>
+      <div class="telemetry-item">
+        <span class="coord-label">SEASON</span>
+        <span class="coord-value">SPRING 2026</span>
+      </div>
+    </div>
+
+    <!-- Animated Scroll Cue to Journey Downward -->
+    <div class="scroll-cue">
+      <a href="#stage-02" class="scroll-cue-link" data-cursor="pointer">
+        <span class="cue-pill">
+          <span class="cue-dot" aria-hidden="true"></span>
+          <span class="cue-text">SCROLL TO WITNESS BLOOM</span>
+          <span class="cue-arrow" aria-hidden="true">↓</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(20px, 3vh, 40px) 0;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  /* Eyebrow Chip */
+  .eyebrow-wrapper {
+    margin-bottom: clamp(16px, 2.5vh, 28px);
+    opacity: 0;
+    animation: hero-reveal 1.2s var(--ease-cinematic) 0.3s forwards;
+  }
+
+  .eyebrow-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 18px rgba(15, 36, 25, 0.04);
+  }
+
+  .eyebrow-marker {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-sage);
+    box-shadow: 0 0 10px rgba(82, 183, 136, 0.8);
+  }
+
+  .eyebrow-code {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-leaf);
+  }
+
+  /* Monumental Title */
+  .title-frame {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    margin-bottom: clamp(20px, 3vh, 36px);
+  }
+
+  .hero-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 15vw, 13.5rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: var(--color-forest);
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title .letter {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    filter: blur(12px);
+    animation: letter-reveal 1.4s var(--ease-cinematic) forwards;
+    background: linear-gradient(180deg, #0f2419 20%, #2d6a4f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.4s var(--ease-smooth), filter 0.4s ease;
+  }
+
+  .hero-title:hover .letter {
+    filter: drop-shadow(0 6px 25px rgba(82, 183, 136, 0.4));
+  }
+
+  .hero-title .letter:nth-child(1) { animation-delay: 0.4s; }
+  .hero-title .letter:nth-child(2) { animation-delay: 0.48s; }
+  .hero-title .letter:nth-child(3) { animation-delay: 0.56s; }
+  .hero-title .letter:nth-child(4) { animation-delay: 0.64s; }
+  .hero-title .letter:nth-child(5) { animation-delay: 0.72s; }
+
+  /* Title Ambient Shadow Underlay */
+  .title-glow-effect {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 15vw, 13.5rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: transparent;
+    white-space: nowrap;
+    -webkit-text-stroke: 1.5px rgba(82, 183, 136, 0.25);
+    filter: blur(24px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Botanical Manifesto */
+  .manifesto-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: clamp(24px, 3.5vh, 40px);
+    opacity: 0;
+    animation: hero-reveal 1.2s var(--ease-cinematic) 0.8s forwards;
+  }
+
+  .manifesto-line {
+    font-family: var(--font-body);
+    font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .primary-line {
+    color: var(--color-text-secondary);
+  }
+
+  .secondary-line {
+    color: var(--color-forest);
+    font-weight: 600;
+  }
+
+  .affirmation-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  .sprout-marker {
+    font-size: 1.4rem;
+  }
+
+  .affirmation-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3.2vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #e5a02e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Telemetry Metadata Bar */
+  .telemetry-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 18px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 18px rgba(15, 36, 25, 0.04);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    opacity: 0;
+    animation: hero-reveal 1.2s var(--ease-cinematic) 1.0s forwards;
+    margin-bottom: 28px;
+  }
+
+  .telemetry-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .coord-label {
+    color: var(--color-text-dim);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+
+  .coord-value {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .telemetry-sep {
+    color: var(--color-border);
+  }
+
+  /* Animated Scroll Cue */
+  .scroll-cue {
+    opacity: 0;
+    animation: hero-reveal 1.2s var(--ease-cinematic) 1.2s forwards;
+  }
+
+  .scroll-cue-link {
+    display: inline-flex;
+    text-decoration: none;
+  }
+
+  .cue-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-border-bright);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-leaf);
+    box-shadow: 0 4px 20px rgba(45, 106, 79, 0.1);
+    transition: all 0.3s var(--ease-smooth);
+  }
+
+  .cue-pill:hover {
+    background: #ffffff;
+    border-color: var(--color-leaf);
+    transform: translateY(2px);
+    box-shadow: 0 6px 24px rgba(45, 106, 79, 0.18);
+  }
+
+  .cue-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-pollen);
+    animation: cue-pulse 1.8s infinite;
+  }
+
+  .cue-arrow {
+    display: inline-block;
+    animation: arrow-bounce 2s infinite ease-in-out;
+  }
+
+  @keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
+
+  @keyframes cue-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
+  /* Keyframe Animations */
+  @keyframes letter-reveal {
+    0% {
+      transform: translateY(110%);
+      opacity: 0;
+      filter: blur(12px);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes hero-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .telemetry-bar {
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      font-size: 0.7rem;
+      border-radius: 12px;
+    }
+  }
+</style>
