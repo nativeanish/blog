@@ -16,9 +16,9 @@
   </div>
 
   <div class="header-right">
-    <div class="telemetry-chip clock-chip" aria-label="Real-time World Clock">
-      <span class="clock-label">TIME</span>
-      <span id="live-clock" class="clock-value">00:00:00 UTC</span>
+    <div class="telemetry-chip clock-chip" aria-label="Nepal Time (GMT +5:45)">
+      <span class="clock-label">NPT (GMT 5:45)</span>
+      <span id="live-clock" class="clock-value">00:00:00 NPT</span>
     </div>
 
     <button id="audio-toggle" class="telemetry-chip audio-toggle" aria-label="Toggle morning garden breeze soundscape" data-cursor="pointer">
@@ -40,10 +40,12 @@
   function updateClock() {
     if (!clockEl) return;
     const now = new Date();
-    const utcHours = String(now.getUTCHours()).padStart(2, '0');
-    const utcMinutes = String(now.getUTCMinutes()).padStart(2, '0');
-    const utcSeconds = String(now.getUTCSeconds()).padStart(2, '0');
-    clockEl.textContent = `${utcHours}:${utcMinutes}:${utcSeconds} UTC`;
+    // Nepal Standard Time (UTC + 5:45)
+    const nptTime = new Date(now.getTime() + (5 * 60 + 45) * 60 * 1000);
+    const hours = String(nptTime.getUTCHours()).padStart(2, '0');
+    const minutes = String(nptTime.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(nptTime.getUTCSeconds()).padStart(2, '0');
+    clockEl.textContent = `${hours}:${minutes}:${seconds} NPT`;
   }
   updateClock();
   setInterval(updateClock, 1000);
