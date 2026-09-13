@@ -1,0 +1,65 @@
+---
+import '../styles/fonts.css';
+import nepaliFont from '@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-700-normal.woff2?url';
+import '../styles/global.css';
+import { person } from '../data/portfolio';
+const title = 'Anish Gupta — Creative Developer · अनिष';
+const description =
+  'Creative developer and AI & ML enthusiast in Kathmandu, Nepal. Explore the work, experiments, and learning journey of Anish Gupta.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  alternateName: person.nepaliName,
+  url: person.site,
+  email: 'mailto:' + person.email,
+  sameAs: [person.instagram],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="preload"
+      href={nepaliFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111213" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={person.name} />
+    <link rel="canonical" href={person.site + '/'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={person.site + '/'} />
+    <meta property="og:image" content={person.site + '/og-image.png'} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Anish Gupta — creative development, from Nepal to the web. A crimson sun above a Himalayan contour landscape."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+    ></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>

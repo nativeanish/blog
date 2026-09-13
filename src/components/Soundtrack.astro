@@ -1,0 +1,103 @@
+---
+import Icon from './Icon.astro';
+---
+
+<nepali-soundtrack class="soundtrack" data-playing="false">
+  <button
+    class="soundtrack-trigger"
+    aria-expanded="false"
+    aria-controls="soundtrack-panel"
+    aria-label="Open Nepali soundtrack controls"
+  >
+    <span class="equalizer" aria-hidden="true">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+    <span>Nepali soundtrack</span>
+    <span class="soundtrack-state" data-trigger-state>
+      OFF
+    </span>
+  </button>
+  <section
+    id="soundtrack-panel"
+    class="soundtrack-panel"
+    aria-labelledby="soundtrack-title"
+    hidden
+  >
+    <div class="soundtrack-heading">
+      <h2 id="soundtrack-title">A little closer to home.</h2>
+      <button data-close aria-label="Close and pause soundtrack">
+        <Icon name="cross" size={16} />
+      </button>
+    </div>
+    <p>
+      A Nepali soundtrack, via YouTube.
+      <br />
+      Press play when you’re ready to listen.
+    </p>
+    <div class="youtube-frame">
+      <div data-youtube-player></div>
+      <span data-player-placeholder>Sound is off. Make yourself at home.</span>
+    </div>
+    <div class="audio-controls">
+      <button
+        data-play
+        aria-label="Play Nepali soundtrack"
+        aria-pressed="false"
+      >
+        Play
+      </button>
+      <button
+        data-mute
+        aria-label="Mute soundtrack"
+        aria-pressed="false"
+        disabled
+      >
+        Mute
+      </button>
+      <label for="soundtrack-volume">Vol.</label>
+      <input
+        id="soundtrack-volume"
+        type="range"
+        min="0"
+        max="100"
+        value="35"
+        aria-label="Soundtrack volume"
+        disabled
+      />
+      <output aria-live="off" class="volume-value" for="soundtrack-volume">
+        35%
+      </output>
+    </div>
+    <p data-audio-status role="status" aria-live="polite">
+      YouTube loads only when you press play.
+    </p>
+    <a
+      class="soundtrack-source"
+      href="https://www.youtube.com/watch?v=taNFbSuESXA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Listen on YouTube <Icon size={12} />
+    </a>
+  </section>
+</nepali-soundtrack>
+<noscript>
+  <p class="no-js-soundtrack wrap">
+    <a
+      href="https://www.youtube.com/watch?v=taNFbSuESXA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Listen to the Nepali soundtrack on YouTube ↗
+    </a>
+  </p>
+  <style>
+    .soundtrack {
+      display: none;
+    }
+  </style>
+</noscript>
+<script src="../scripts/audio.ts"></script>

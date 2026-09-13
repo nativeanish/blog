@@ -1,0 +1,42 @@
+---
+import { journey } from '../data/portfolio';
+---
+
+<section id="journey" class="section journey" aria-labelledby="journey-title">
+  <div class="wrap">
+    <div class="section-kicker micro">
+      <span>05 / THE JOURNEY</span>
+      <span lang="ne">यात्रा</span>
+    </div>
+    <div class="journey-grid">
+      <div data-reveal>
+        <h2 id="journey-title">
+          Always a<br />
+          <em>work in progress.</em>
+        </h2>
+        <p class="journey-intro">
+          No finish line. Just better questions,
+          <br />
+          new perspectives, and the next small step.
+        </p>
+        <span class="journey-glyph" lang="ne" aria-hidden="true">
+          यात्रा
+        </span>
+      </div>
+      <ol class="timeline">
+        {journey.map((item, index) => (
+          <li data-reveal>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-meta micro">
+              <span class:list={{ accent: index === 1 }}>{item.phase}</span>
+              <span class="muted">0{index + 1}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span class="journey-tag micro">{item.tag}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

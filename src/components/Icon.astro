@@ -1,0 +1,29 @@
+---
+interface Props {
+  name?: 'arrow' | 'down' | 'cross' | 'code' | 'spark' | 'mountain';
+  size?: number;
+}
+const { name = 'arrow', size = 20 } = Astro.props;
+const paths = {
+  arrow: 'M5 19 19 5M5 5h14v14',
+  down: 'M12 3v18M5 14l7 7 7-7',
+  cross: 'm5 5 14 14M5 19 19 5',
+  code: 'm8 5-6 7 6 7m8-14 6 7-6 7M14 3l-4 18',
+  spark: 'M12 2v20M2 12h20M5 5l14 14M5 19 19-14',
+  mountain: 'm1 20 8-14 5 8 3-5 6 11H1Zm8-14 1 7 4 1',
+};
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name]} />
+</svg>

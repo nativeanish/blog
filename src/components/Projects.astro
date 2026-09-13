@@ -1,0 +1,119 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="work" class="section work wrap" aria-labelledby="work-title">
+  <div class="section-kicker micro">
+    <span>04 / SELECTED WORK</span>
+    <span lang="ne">काम</span>
+  </div>
+  <div class="section-heading" data-reveal>
+    <h2 id="work-title">
+      Ideas, made tangible<span class="accent">.</span>
+    </h2>
+    <p>
+      A small collection.
+      <br />
+      Room for what comes next.
+    </p>
+  </div>
+  <div class="project-grid">
+    <article class="project featured-project" data-reveal>
+      <a
+        href="#home"
+        class="project-visual portfolio-visual"
+        aria-label="Explore Himalayan Signal, this portfolio"
+      >
+        <span class="micro visual-label">01 / PERSONAL WEBSITE</span>
+        <span class="project-nepali" lang="ne" aria-hidden="true">
+          अनिष
+        </span>
+        <img
+          src="/terrain.svg"
+          width="1000"
+          height="800"
+          loading="lazy"
+          alt=""
+        />
+        <span class="visual-sun" aria-hidden="true"></span>
+        <span class="visual-footer micro">
+          FROM NEPAL, TO THE WEB.
+          <span class="round-arrow">
+            <Icon size={20} />
+          </span>
+        </span>
+      </a>
+      <div class="project-info">
+        <div>
+          <span class="micro accent">
+            CREATIVE DEVELOPMENT · PERSONAL PROJECT
+          </span>
+          <h3>Himalayan Signal</h3>
+        </div>
+        <span class="micro muted">2026</span>
+      </div>
+      <p class="project-description">
+        The website you’re exploring. An evolving digital identity, built with
+        Astro, Three.js, and a sense of home.
+      </p>
+      <details class="project-details">
+        <summary>
+          Inside the project <span aria-hidden="true">+</span>
+        </summary>
+        <div>
+          <p>
+            A procedural mountain landscape meets a static-first portfolio. The
+            scene responds to your pointer, rests when out of view, and gives
+            way to a still illustration when motion is reduced.
+          </p>
+          <ul class="tags">
+            <li>Astro</li>
+            <li>Three.js</li>
+            <li>TypeScript</li>
+          </ul>
+          <a
+            href="https://github.com/nativeanish/blog"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-link"
+          >
+            View source on GitHub <Icon size={15} />
+          </a>
+        </div>
+      </details>
+    </article>
+    <article class="project next-project" data-reveal>
+      <div class="project-visual next-visual">
+        <span class="micro visual-label">02 / AN OPEN CANVAS</span>
+        <div class="experiment-grid" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="next-asterisk" aria-hidden="true">
+          ✳
+        </span>
+        <span class="visual-footer micro">THE NEXT QUESTION IS THE START.</span>
+      </div>
+      <div class="project-info">
+        <div>
+          <span class="micro muted">PLACEHOLDER · FUTURE PROJECT</span>
+          <h3>Something worth exploring.</h3>
+        </div>
+      </div>
+      <p class="project-description">
+        A space reserved for the next experiment. Details and a case study will
+        follow when there’s real work to share.
+      </p>
+      <a href="#contact" class="text-link project-contact">
+        Have an idea? Let’s talk <Icon size={16} />
+      </a>
+    </article>
+  </div>
+</section>

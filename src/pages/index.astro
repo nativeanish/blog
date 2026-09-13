@@ -1,91 +1,26 @@
 ---
-import '../styles/global.css';
-import CustomCursor from '../components/CustomCursor.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import HudHeader from '../components/HudHeader.astro';
 import HeroIdentity from '../components/HeroIdentity.astro';
-import ChapterGermination from '../components/ChapterGermination.astro';
-import ChapterCanopy from '../components/ChapterCanopy.astro';
-import ScrollProgressIndicator from '../components/ScrollProgressIndicator.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Journey from '../components/Journey.astro';
+import Contact from '../components/Contact.astro';
+import HudFooter from '../components/HudFooter.astro';
+import Soundtrack from '../components/Soundtrack.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="theme-color" content="#faf7f2" />
-    <title>Anish</title>
-    <meta name="description" content="Something is taking root. A new digital garden is growing. I am Anish." />
-    <meta name="author" content="Anish" />
-
-    <!-- Open Graph / Meta -->
-    <meta property="og:title" content="Anish" />
-    <meta property="og:description" content="Something is taking root. A new digital garden is growing. I am Anish." />
-    <meta property="og:type" content="website" />
-
-    <!-- Inline Botanical Sprout Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23faf7f2' stroke='%232d6a4f' stroke-width='4'/><path d='M50 78 V42 C50 32 36 28 32 38 C32 50 46 52 50 56' fill='%2352b788' stroke='%232d6a4f' stroke-width='3'/><path d='M50 56 C54 48 68 44 68 34 C64 26 50 30 50 42' fill='%2374c69d' stroke='%232d6a4f' stroke-width='3'/><circle cx='50' cy='78' r='4' fill='%23e5a02e'/></svg>" />
-  </head>
-  <body>
-    <!-- Custom Botanical Dewdrop Cursor -->
-    <CustomCursor />
-
-    <!-- Fixed 3D WebGL Living Flora & Pollen Canvas -->
-    <div class="universe-container" aria-hidden="true">
-      <canvas id="webgl-canvas"></canvas>
-      <div class="webgl-fallback"></div>
-    </div>
-
-    <!-- Organic Atmospheric Overlays: Morning Sunbeams & Paper Grain -->
-    <div class="sunlight-overlay" aria-hidden="true"></div>
-    <div class="grain-overlay" aria-hidden="true"></div>
-
-    <!-- Minimal Botanical Frame Corners -->
-    <div class="hud-corner hud-corner--tl" aria-hidden="true"></div>
-    <div class="hud-corner hud-corner--tr" aria-hidden="true"></div>
-    <div class="hud-corner hud-corner--bl" aria-hidden="true"></div>
-    <div class="hud-corner hud-corner--br" aria-hidden="true"></div>
-
-    <!-- Pinned Top HUD Header -->
-    <div class="hud-header-wrapper">
-      <HudHeader />
-    </div>
-
-    <!-- Scroll Progress Indicator on the side -->
-    <ScrollProgressIndicator />
-
-    <!-- Multi-Stage Scroll Journey -->
-    <main class="scroll-viewport">
-      <!-- Stage 01: The Seed -->
-      <section id="stage-01" class="scroll-stage">
-        <HeroIdentity />
-      </section>
-
-      <!-- Stage 02: Germination & Unfolding -->
-      <section id="stage-02" class="scroll-stage">
-        <ChapterGermination />
-      </section>
-
-      <!-- Stage 03: Full Bloom / Canopy Finale -->
-      <section id="stage-03" class="scroll-stage">
-        <ChapterCanopy />
-      </section>
-    </main>
-
-    <!-- Client Initializer Script -->
-    <script>
-      import { initWebGLScene } from '../scripts/three-scene';
-      import { initCursor } from '../scripts/cursor';
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          initWebGLScene();
-          initCursor();
-        });
-      } else {
-        initWebGLScene();
-        initCursor();
-      }
-    </script>
-  </body>
-</html>
+<BaseLayout>
+  <HudHeader />
+  <main id="main">
+    <HeroIdentity />
+    <About />
+    <Skills />
+    <Projects />
+    <Journey />
+    <Contact />
+  </main>
+  <HudFooter />
+  <Soundtrack />
+</BaseLayout>

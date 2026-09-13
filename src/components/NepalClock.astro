@@ -1,0 +1,41 @@
+<nepal-clock class="nepal-clock" aria-label="Current time in Nepal">
+  NPT / UTC +5:45
+</nepal-clock>
+<script>
+  class NepalClock extends HTMLElement {
+    private timer = 0;
+    private events?: AbortController;
+    private format = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Kathmandu',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
+    private update = () => {
+      this.textContent = this.format.format(new Date()) + ' NPT';
+    };
+    private start = () => {
+      clearInterval(this.timer);
+      if (!document.hidden) {
+        this.update();
+        this.timer = window.setInterval(this.update, 30000);
+      }
+    };
+    connectedCallback() {
+      this.events = new AbortController();
+      const { signal } = this.events;
+      this.start();
+      document.addEventListener('visibilitychange', this.start, { signal });
+      window.addEventListener('pagehide', () => clearInterval(this.timer), {
+        signal,
+      });
+      window.addEventListener('pageshow', this.start, { signal });
+    }
+    disconnectedCallback() {
+      clearInterval(this.timer);
+      this.events?.abort();
+    }
+  }
+  if (!customElements.get('nepal-clock'))
+    customElements.define('nepal-clock', NepalClock);
+</script>

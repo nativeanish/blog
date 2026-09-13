@@ -1,0 +1,50 @@
+---
+import { person } from '../data/portfolio';
+import Icon from './Icon.astro';
+---
+
+<section
+  id="contact"
+  class="section contact wrap"
+  aria-labelledby="contact-title"
+>
+  <div class="section-kicker micro">
+    <span>06 / SAY HELLO</span>
+    <span lang="ne">सम्पर्क</span>
+  </div>
+  <div class="contact-top" data-reveal>
+    <p>
+      <i class="signal-dot"></i> GOOD THINGS START WITH A CONVERSATION
+    </p>
+    <span lang="ne">नमस्ते।</span>
+  </div>
+  <h2 id="contact-title" data-reveal>
+    Let’s make
+    <br />
+    <em>something matter.</em>
+    <span class="accent" aria-hidden="true">
+      ↗
+    </span>
+  </h2>
+  <div class="contact-bottom" data-reveal>
+    <div>
+      <p>
+        An idea, a collaboration, or just a hello.
+        <br />
+        I’d love to hear from you.
+      </p>
+      <a class="email-link" href={'mailto:' + person.email}>
+        {person.email}
+        <Icon size={23} />
+      </a>
+    </div>
+    <a
+      href={person.instagram}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-link"
+    >
+      Find me on Instagram <Icon size={16} />
+    </a>
+  </div>
+</section>

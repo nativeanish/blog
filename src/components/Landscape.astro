@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+---
+
+<himalayan-landscape class="landscape" data-state="static">
+  <div class="landscape-art" aria-hidden="true">
+    <div class="sun">
+      <div></div>
+    </div>
+    <span class="orbital-label micro">BEYOND THE ORDINARY</span>
+    <img
+      class="terrain-fallback"
+      src="/terrain.svg"
+      alt=""
+      width="1000"
+      height="800"
+      fetchpriority="high"
+    />
+    <canvas class="terrain-canvas"></canvas>
+  </div>
+  <div class="scene-controls micro">
+    <span data-scene-status>STILL LANDSCAPE</span>
+    <button
+      data-motion-toggle
+      aria-label="Pause landscape animation"
+      aria-pressed="false"
+      hidden
+    >
+      <span data-motion-label>Pause motion</span>
+      <Icon name="spark" size={12} />
+    </button>
+  </div>
+</himalayan-landscape>
+<script src="../scripts/landscape.ts"></script>

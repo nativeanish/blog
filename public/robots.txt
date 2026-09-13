@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://guptaanish.com.np/sitemap.xml

@@ -1,220 +1,41 @@
 ---
-// Botanical Garden Header
+import Icon from './Icon.astro';
 ---
-<header class="hud-header" role="banner">
-  <div class="header-left">
-    <div class="brand-cluster" data-cursor="pointer">
-      <span class="brand-glyph" aria-hidden="true">🌱</span>
-      <span class="brand-name">ANISH</span>
-      <span class="brand-code">GARDEN 01</span>
-    </div>
 
-    <div class="telemetry-chip status-chip">
-      <span class="pulse-beacon" aria-hidden="true"></span>
-      <span class="status-text">GERMINATING DIGITAL SPACE</span>
-    </div>
-  </div>
-
-  <div class="header-right">
-    <div class="telemetry-chip clock-chip" aria-label="Nepal Time (GMT +5:45)">
-      <span class="clock-label">NPT (GMT 5:45)</span>
-      <span id="live-clock" class="clock-value">00:00:00 NPT</span>
-    </div>
-
-    <button id="audio-toggle" class="telemetry-chip audio-toggle" aria-label="Toggle morning garden breeze soundscape" data-cursor="pointer">
-      <span class="audio-icon" aria-hidden="true">
-        <span class="bar bar-1"></span>
-        <span class="bar bar-2"></span>
-        <span class="bar bar-3"></span>
+<site-header class="site-header">
+  <header class="header-inner wrap">
+    <a href="#home" class="brand" aria-label="Anish Gupta, home">
+      <svg
+        class="brand-mark"
+        width="28"
+        height="34"
+        viewBox="0 0 28 34"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 31V3l21 12H8l17 13H3Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <path d="M3 3v28" stroke="#ed6d60" stroke-width="3" />
+      </svg>
+      <span>
+        ANISH GUPTA<span class="brand-sub">A PERSONAL EXPLORATION</span>
       </span>
-      <span id="audio-state-text" class="audio-label">BREEZE // OFF</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+      <span data-menu-label>Menu</span>
+      <span class="menu-lines" aria-hidden="true"></span>
     </button>
-  </div>
-</header>
-
-<script>
-  import { soundscape } from '../scripts/audio';
-
-  // Live Clock
-  const clockEl = document.getElementById('live-clock');
-  function updateClock() {
-    if (!clockEl) return;
-    const now = new Date();
-    // Nepal Standard Time (UTC + 5:45)
-    const nptTime = new Date(now.getTime() + (5 * 60 + 45) * 60 * 1000);
-    const hours = String(nptTime.getUTCHours()).padStart(2, '0');
-    const minutes = String(nptTime.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(nptTime.getUTCSeconds()).padStart(2, '0');
-    clockEl.textContent = `${hours}:${minutes}:${seconds} NPT`;
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-
-  // Audio Toggle
-  const audioBtn = document.getElementById('audio-toggle');
-  const audioLabel = document.getElementById('audio-state-text');
-  const audioIcon = audioBtn?.querySelector('.audio-icon');
-
-  if (audioBtn && audioLabel) {
-    audioBtn.addEventListener('click', () => {
-      const active = soundscape.toggle();
-      if (active) {
-        audioLabel.textContent = 'BREEZE // ACTIVE';
-        audioBtn.classList.add('is-active');
-        audioIcon?.classList.add('is-playing');
-      } else {
-        audioLabel.textContent = 'BREEZE // OFF';
-        audioBtn.classList.remove('is-active');
-        audioIcon?.classList.remove('is-playing');
-      }
-    });
-  }
-</script>
-
-<style>
-  .hud-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 16px;
-    z-index: 20;
-    opacity: 0;
-    animation: hud-fade-in 1.2s var(--ease-cinematic) 0.2s forwards;
-  }
-
-  .header-left,
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .brand-cluster {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 9999px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 18px rgba(15, 36, 25, 0.04);
-    transition: all 0.3s var(--ease-smooth);
-  }
-
-  .brand-cluster:hover {
-    border-color: var(--color-border-bright);
-    background: var(--color-surface-hover);
-    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.1);
-    transform: translateY(-1px);
-  }
-
-  .brand-glyph {
-    font-size: 1rem;
-  }
-
-  .brand-name {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 0.14em;
-    color: var(--color-forest);
-  }
-
-  .brand-code {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: var(--color-leaf);
-    padding: 2px 7px;
-    border-radius: 9999px;
-    background: rgba(82, 183, 136, 0.14);
-  }
-
-  .status-text {
-    color: var(--color-text-secondary);
-    letter-spacing: 0.08em;
-  }
-
-  .clock-chip {
-    font-variant-numeric: tabular-nums;
-  }
-
-  .clock-label {
-    color: var(--color-text-dim);
-    font-size: 0.65rem;
-  }
-
-  .clock-value {
-    color: var(--color-text-primary);
-  }
-
-  /* Audio Button styling */
-  .audio-toggle {
-    cursor: pointer;
-    transition: all 0.3s var(--ease-smooth);
-  }
-
-  .audio-toggle.is-active {
-    border-color: var(--color-leaf);
-    color: var(--color-leaf);
-    background: rgba(82, 183, 136, 0.18);
-    box-shadow: 0 4px 18px rgba(45, 106, 79, 0.15);
-  }
-
-  .audio-icon {
-    display: flex;
-    align-items: flex-end;
-    gap: 2.5px;
-    height: 11px;
-  }
-
-  .audio-icon .bar {
-    width: 2px;
-    height: 4px;
-    background: currentColor;
-    border-radius: 1px;
-    transition: height 0.2s ease;
-  }
-
-  .audio-icon.is-playing .bar-1 {
-    animation: bar-wave 1.1s ease-in-out infinite alternate;
-  }
-
-  .audio-icon.is-playing .bar-2 {
-    animation: bar-wave 1.5s ease-in-out infinite alternate 0.3s;
-  }
-
-  .audio-icon.is-playing .bar-3 {
-    animation: bar-wave 0.9s ease-in-out infinite alternate 0.15s;
-  }
-
-  @keyframes bar-wave {
-    0% { height: 3px; }
-    100% { height: 11px; }
-  }
-
-  @keyframes hud-fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .clock-chip,
-    .status-chip {
-      display: none;
-    }
-    .hud-header {
-      gap: 10px;
-    }
-  }
-</style>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact" class="nav-contact">
+        Let’s talk <Icon size={14} />
+      </a>
+    </nav>
+  </header>
+</site-header>
+<script src="../scripts/interface.ts"></script>

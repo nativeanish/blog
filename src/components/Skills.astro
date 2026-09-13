@@ -1,0 +1,43 @@
+---
+import { disciplines } from '../data/portfolio';
+import Icon from './Icon.astro';
+---
+
+<section id="skills" class="section skills" aria-labelledby="skills-title">
+  <div class="wrap">
+    <div class="section-kicker micro">
+      <span>03 / TOOLS &amp; CURIOSITIES</span>
+      <span lang="ne">सिर्जना</span>
+    </div>
+    <div class="section-heading" data-reveal>
+      <h2 id="skills-title">
+        A creative toolkit.
+        <br />
+        <span class="muted">An open mind.</span>
+      </h2>
+      <p>
+        Skills I’m building.
+        <br />
+        Possibilities I’m exploring.
+      </p>
+    </div>
+    <div class="discipline-grid">
+      {disciplines.map((item) => (
+        <article class="discipline" data-reveal>
+          <div class="discipline-top">
+            <Icon name={item.icon} size={30} />
+            <span class="micro muted">{item.number}</span>
+          </div>
+          <span class="micro accent">{item.note}</span>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <ul class="tags" aria-label={item.title + ' technologies'}>
+            {item.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
